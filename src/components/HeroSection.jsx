@@ -87,9 +87,12 @@ const HeroSection = ({ theme }) => {
             <div className="absolute inset-0 bg-blue-600 dark:bg-electric-blue opacity-20 blur-[100px] rounded-full pointer-events-none"></div>
             <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10 opacity-40 dark:opacity-60 dark:from-charcoal-dark"></div>
-              <img 
-                src="/cable_hero_1776613623313.png" 
-                alt="Multi-core shielded cable exposed" 
+              <video 
+                src="/homeultra.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-auto object-cover aspect-square lg:aspect-auto lg:h-[600px]"
               />
               <motion.div 
