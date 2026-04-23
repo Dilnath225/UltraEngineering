@@ -35,7 +35,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <a href="#home" className="flex items-center gap-3">
               <img src="/logo.png" alt="Ultra Engineering Logo" className="h-14 md:h-16 w-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-700" />
               <div className="flex flex-col">
-                <span className="font-extrabold text-xl md:text-2xl !text-black leading-none tracking-tight">ULTRA</span>
+                <span className={`font-extrabold text-xl md:text-2xl leading-none tracking-tight ${isScrolled ? 'text-gray-900 dark:text-white' : '!text-black'}`}>ULTRA</span>
                 <span className="font-bold text-sm md:text-base text-blue-600 leading-none tracking-widest mt-1">ENGINEERING</span>
               </div>
             </a>
@@ -50,7 +50,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + (idx * 0.1), duration: 0.5 }}
-                className="!text-black hover:!text-blue-600 transition-colors text-sm uppercase tracking-wider font-extrabold"
+                className={`hover:text-blue-600 transition-colors text-sm uppercase tracking-wider font-extrabold ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:dark:text-electric-blue' : '!text-black hover:!text-blue-700'}`}
               >
                 {link.name}
               </motion.a>
@@ -101,7 +101,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         >
           <div className="px-2 pt-2 pb-5 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-extrabold !text-black hover:!text-blue-600 hover:bg-gray-100 border-l-4 border-transparent hover:border-blue-600 transition-all">
+              <a key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-extrabold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-electric-blue hover:bg-gray-100 dark:hover:bg-charcoal-dark border-l-4 border-transparent hover:border-blue-600 transition-all">
                 {link.name}
               </a>
             ))}
