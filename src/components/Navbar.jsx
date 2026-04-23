@@ -50,7 +50,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + (idx * 0.1), duration: 0.5 }}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-electric-blue transition-colors text-sm uppercase tracking-wider font-semibold"
+                className="text-black dark:text-white hover:text-blue-600 dark:hover:text-electric-blue transition-colors text-sm uppercase tracking-wider font-extrabold"
               >
                 {link.name}
               </motion.a>

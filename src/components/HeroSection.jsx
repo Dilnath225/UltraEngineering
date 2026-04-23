@@ -24,8 +24,14 @@ const HeroSection = ({ theme }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/95 to-transparent dark:from-charcoal-dark dark:via-charcoal-dark/95 dark:to-transparent w-full lg:w-[60%]" />
       </div>
 
-      {/* Three.js Particle Network Background */}
-      <div className="absolute inset-0 z-[1] pointer-events-none opacity-60">
+      {/* Three.js Particle Network Background restricted to details side */}
+      <div 
+        className="absolute inset-y-0 left-0 w-full lg:w-[60%] z-[1] pointer-events-none opacity-60"
+        style={{
+          WebkitMaskImage: 'linear-gradient(to right, black 70%, transparent 100%)',
+          maskImage: 'linear-gradient(to right, black 70%, transparent 100%)'
+        }}
+      >
         <HeroCanvas theme={theme} />
       </div>
       
