@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-100 text-gray-900 dark:bg-charcoal-dark dark:text-white font-sans antialiased overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400 dark:from-electric-blue dark:to-blue-400;
+  }
+
+  .bg-gradient-tech {
+    @apply bg-gradient-to-br from-gray-100 to-gray-200 dark:from-charcoal-dark dark:to-charcoal-light;
+  }
+}
