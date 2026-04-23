@@ -34,6 +34,10 @@ const Navbar = ({ theme, toggleTheme }) => {
           <div className="flex-shrink-0 flex items-center">
             <a href="#home" className="flex items-center gap-3">
               <img src="/logo.png" alt="Ultra Engineering Logo" className="h-14 md:h-16 w-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-700" />
+              <div className="flex flex-col">
+                <span className="font-extrabold text-xl md:text-2xl text-gray-900 dark:text-white leading-none tracking-tight">ULTRA</span>
+                <span className="font-bold text-sm md:text-base text-blue-600 dark:text-electric-blue leading-none tracking-widest mt-1">ENGINEERING</span>
+              </div>
             </a>
           </div>
 
