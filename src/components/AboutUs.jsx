@@ -1,30 +1,57 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Microchip, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AboutCanvas from './AboutCanvas';
 
 const AboutUs = ({ theme }) => {
+  const videoRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="about" className="relative py-24 bg-gradient-tech overflow-hidden transition-colors">
       <AboutCanvas theme={theme} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[2]">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* Image Side */}
+          {/* Video Side */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="order-2 lg:order-1 relative"
+            ref={containerRef}
           >
             <div className="absolute -inset-4 bg-blue-100 dark:bg-electric-blue/20 blur-3xl rounded-full"></div>
             <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-tr from-gray-900 via-transparent to-transparent z-10 opacity-40 dark:opacity-70 dark:from-charcoal-dark"></div>
-              <img 
-                src="/multimeter_about_1776613640499.png" 
-                alt="Multimeter on workbench with cables" 
-                className="w-full h-auto object-cover aspect-[4/3] transform hover:scale-[1.03] transition-transform duration-700" 
+              <video
+                ref={videoRef}
+                src="/ultra.mp4"
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-auto object-cover aspect-[4/3]"
               />
               
               {/* Overlay Badge */}

@@ -16,7 +16,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
           >
             <a href="#home" className="flex items-center gap-3 mb-6">
-              <img src="/logo.jpeg" alt="Ultra Engineering Logo" className="h-[60px] w-auto rounded-md shadow-sm border border-gray-300 dark:border-gray-800/50" />
+              <img src="/logo.png" alt="Ultra Engineering Logo" className="h-20 w-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-700" />
             </a>
             <p className="text-gray-600 dark:text-gray-500 text-sm max-w-sm mb-6 mt-4">
               Precision Electrical & Cable Solutions. Providing top-tier underground and overhead cable tracing, fault finding, and advanced systemic rectifications.
