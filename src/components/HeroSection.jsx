@@ -6,14 +6,14 @@ import HeroCanvas from './HeroCanvas';
 const HeroSection = ({ theme }) => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gray-100 dark:bg-charcoal-dark">
-      
+
       {/* Modern Fade Background Image */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* The Image on the right side, fading to transparent on the left */}
-        <div 
+        <div
           className="absolute inset-0 w-full h-full lg:w-[70%] lg:left-auto lg:right-0 opacity-40 lg:opacity-100"
           style={{
-            backgroundImage: 'url("/ultrabg.jpeg")',
+            backgroundImage: 'url("/ultrabgfinal.PNG")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 50%)',
@@ -25,7 +25,7 @@ const HeroSection = ({ theme }) => {
       </div>
 
       {/* Three.js Particle Network Background restricted to details side */}
-      <div 
+      <div
         className="absolute inset-y-0 left-0 w-full lg:w-[60%] z-[1] pointer-events-none opacity-60"
         style={{
           WebkitMaskImage: 'linear-gradient(to right, black 70%, transparent 100%)',
@@ -34,13 +34,13 @@ const HeroSection = ({ theme }) => {
       >
         <HeroCanvas theme={theme} />
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 lg:py-0">
         <div className="max-w-2xl">
-          
+
           {/* Text Panel */}
           <div className="flex flex-col justify-center text-left">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
@@ -50,8 +50,8 @@ const HeroSection = ({ theme }) => {
               <span className="h-1.5 w-12 bg-blue-600 dark:bg-electric-blue rounded-full"></span>
               <span className="text-blue-700 dark:text-electric-blue font-bold tracking-widest uppercase text-sm drop-shadow-md">Industrial Grade</span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -60,8 +60,8 @@ const HeroSection = ({ theme }) => {
             >
               ULTRA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500 dark:from-white dark:to-gray-400">ENGINEERING</span>
             </motion.h1>
-            
-            <motion.h2 
+
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -70,8 +70,8 @@ const HeroSection = ({ theme }) => {
             >
               Precision Electrical & <br className="hidden md:block" /> Cable Solutions.
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
@@ -80,8 +80,8 @@ const HeroSection = ({ theme }) => {
             >
               State-of-the-art diagnostic equipment and expert engineering for fault finding, path tracing, and high-voltage rectification. We ensure your circuits never break.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -98,7 +98,7 @@ const HeroSection = ({ theme }) => {
               </a>
             </motion.div>
           </div>
-          
+
         </div>
       </div>
     </section>
