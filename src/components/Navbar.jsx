@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { HashLink } from 'react-router-hash-link';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +18,14 @@ const Navbar = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const showSolidNavbar = isScrolled || !isHomePage;
+
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '/#home' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'About Us', href: '/#about' },
+    { name: 'Contact', href: '/#contact' }
   ];
 
   return (
@@ -26,34 +33,38 @@ const Navbar = ({ theme, toggleTheme }) => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-100/95 dark:bg-charcoal-dark/95 backdrop-blur-md shadow-lg py-3 border-b border-gray-200 dark:border-gray-800' : 'bg-transparent py-5'}`}
+      className={`fixed w-full z-50 transition-all duration-300 ${showSolidNavbar ? 'bg-gray-100/95 dark:bg-charcoal-dark/95 backdrop-blur-md shadow-lg py-3 border-b border-gray-200 dark:border-gray-800' : 'bg-transparent py-5'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="flex items-center gap-3">
+            <HashLink smooth to="/#home" className="flex items-center gap-3">
               <img src="/logo.png" alt="Ultra Engineering Logo" className="h-14 md:h-16 w-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-700" />
               <div className="flex flex-col">
                 <span className="font-extrabold text-xl md:text-2xl leading-none tracking-tight !text-white">ULTRA</span>
                 <span className="font-bold text-sm md:text-base text-blue-600 leading-none tracking-widest mt-1">ENGINEERING</span>
               </div>
-            </a>
+            </HashLink>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link, idx) => (
-              <motion.a 
-                key={link.name} 
-                href={link.href}
+              <motion.div
+                key={link.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + (idx * 0.1), duration: 0.5 }}
-                className={`hover:text-blue-600 transition-colors text-sm uppercase tracking-wider font-extrabold ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:dark:text-electric-blue' : '!text-black hover:!text-blue-700'}`}
               >
-                {link.name}
-              </motion.a>
+                <HashLink 
+                  smooth 
+                  to={link.href}
+                  className={`hover:text-blue-600 transition-colors text-sm uppercase tracking-wider font-extrabold ${showSolidNavbar ? 'text-gray-700 dark:text-gray-300 hover:dark:text-electric-blue' : '!text-black hover:!text-blue-700'}`}
+                >
+                  {link.name}
+                </HashLink>
+              </motion.div>
             ))}
             
             {/* Theme Toggle Button */}
@@ -67,17 +78,21 @@ const Navbar = ({ theme, toggleTheme }) => {
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
             
-            <motion.a 
-              href="#quote" 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 rounded-full bg-electric-blue text-white font-semibold hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(0,162,255,0.4)] transition-all"
             >
-              Get Quote
-            </motion.a>
+              <HashLink 
+                smooth 
+                to="/#contact" 
+                className="px-6 py-2.5 rounded-full bg-electric-blue text-white font-semibold hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(0,162,255,0.4)] transition-all inline-block"
+              >
+                Get Quote
+              </HashLink>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -101,13 +116,13 @@ const Navbar = ({ theme, toggleTheme }) => {
         >
           <div className="px-2 pt-2 pb-5 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-extrabold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-electric-blue hover:bg-gray-100 dark:hover:bg-charcoal-dark border-l-4 border-transparent hover:border-blue-600 transition-all">
+              <HashLink smooth key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-extrabold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-electric-blue hover:bg-gray-100 dark:hover:bg-charcoal-dark border-l-4 border-transparent hover:border-blue-600 transition-all">
                 {link.name}
-              </a>
+              </HashLink>
             ))}
-            <a href="#quote" onClick={() => setMobileMenuOpen(false)} className="block text-center mt-4 px-4 py-3 rounded-md text-base font-bold bg-electric-blue text-white hover:bg-blue-500 mx-3">
+            <HashLink smooth to="/#contact" onClick={() => setMobileMenuOpen(false)} className="block text-center mt-4 px-4 py-3 rounded-md text-base font-bold bg-electric-blue text-white hover:bg-blue-500 mx-3">
               Get Quote
-            </a>
+            </HashLink>
           </div>
         </motion.div>
       )}

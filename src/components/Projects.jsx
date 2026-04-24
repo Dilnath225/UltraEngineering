@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Cable, Activity, Layers } from "lucide-react";
-import projectsData from "../data/projectsData";
+import { Zap, Cable, Activity, Layers, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import allProjectsData from "../data/allProjectsData";
 import ProjectsCanvas from "./ProjectsCanvas";
 
 const categoryIcons = {
@@ -16,10 +17,12 @@ const categories = ["All", "Underground", "Overhead", "Testing"];
 const Projects = ({ theme }) => {
   const [activeCategory, setActiveCategory] = useState("All");
 
+  // Only take featured projects for the home page
+  const featuredOnly = allProjectsData.filter(p => p.isFeatured);
   const filteredProjects =
     activeCategory === "All"
-      ? projectsData
-      : projectsData.filter((p) => p.category === activeCategory);
+      ? featuredOnly
+      : featuredOnly.filter((p) => p.category === activeCategory);
 
   return (
     <section
@@ -75,7 +78,7 @@ const Projects = ({ theme }) => {
         {/* Projects Grid */}
         <motion.div
           layout
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -86,13 +89,13 @@ const Projects = ({ theme }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="group bg-gray-50 dark:bg-charcoal-light rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:border-blue-300 dark:hover:border-electric-blue/50 hover:shadow-xl dark:hover:shadow-[0_10px_40px_rgba(0,162,255,0.12)] transition-all duration-500"
+                className="group flex flex-col bg-gray-50 dark:bg-charcoal-light rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:border-blue-300 dark:hover:border-electric-blue/50 hover:shadow-xl dark:hover:shadow-[0_10px_40px_rgba(0,162,255,0.12)] transition-all duration-500"
               >
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden flex-shrink-0">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.location}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
@@ -105,17 +108,36 @@ const Projects = ({ theme }) => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-electric-blue transition-colors leading-snug">
-                    {project.title}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-electric-blue transition-colors leading-snug">
+                    {project.location}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-xs text-blue-600 dark:text-electric-blue font-bold uppercase tracking-wider mb-3">
+                    {project.service}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mt-auto">
                     {project.description}
                   </p>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
+        </motion.div>
+
+        {/* See All Projects CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
+          <Link 
+            to="/projects"
+            className="inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-full bg-transparent border-2 border-blue-600 dark:border-electric-blue text-blue-700 dark:text-electric-blue font-bold tracking-wide hover:bg-blue-600 dark:hover:bg-electric-blue hover:text-white transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,162,255,0.4)] group"
+          >
+            <span>See All Project History</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>

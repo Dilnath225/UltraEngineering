@@ -9,6 +9,19 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AllProjectsPage from './pages/AllProjectsPage';
+
+const HomePage = ({ theme }) => (
+  <main>
+    <HeroSection theme={theme} />
+    <ServicesGrid theme={theme} />
+    <Projects theme={theme} />
+    <AboutUs theme={theme} />
+    <ContactSection theme={theme} />
+  </main>
+);
+
 function App() {
   const [theme, setTheme] = useState('dark');
 
@@ -46,18 +59,19 @@ function App() {
         <meta name="author" content="Ultra Engineering" />
       </Helmet>
 
-      <div className="w-full min-h-screen font-sans selection:bg-electric-blue selection:text-white transition-colors duration-300">
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
-        <main>
-          <HeroSection theme={theme} />
-          <ServicesGrid theme={theme} />
-          <Projects theme={theme} />
-          <AboutUs theme={theme} />
-          <ContactSection theme={theme} />
-        </main>
-        <Footer />
-        <WhatsAppButton />
-      </div>
+      <Router>
+        <div className="w-full min-h-screen font-sans selection:bg-electric-blue selection:text-white transition-colors duration-300">
+          <Navbar theme={theme} toggleTheme={toggleTheme} />
+          
+          <Routes>
+            <Route path="/" element={<HomePage theme={theme} />} />
+            <Route path="/projects" element={<AllProjectsPage />} />
+          </Routes>
+          
+          <Footer />
+          <WhatsAppButton />
+        </div>
+      </Router>
     </HelmetProvider>
   );
 }

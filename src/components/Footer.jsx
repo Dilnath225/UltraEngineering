@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { HashLink } from 'react-router-hash-link';
 
 const Footer = () => {
   return (
@@ -15,13 +16,13 @@ const Footer = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-            <a href="#home" className="flex items-center gap-3 mb-6">
+            <HashLink smooth to="/#home" className="flex items-center gap-3 mb-6">
               <img src="/logo.png" alt="Ultra Engineering Logo" className="h-20 w-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-700" />
               <div className="flex flex-col">
                 <span className="font-extrabold text-2xl text-gray-900 dark:text-white leading-none tracking-tight">ULTRA</span>
                 <span className="font-bold text-base text-blue-600 dark:text-electric-blue leading-none tracking-widest mt-1">ENGINEERING</span>
               </div>
-            </a>
+            </HashLink>
             <p className="text-gray-600 dark:text-gray-500 text-sm max-w-sm mb-6 mt-4">
               Precision Electrical & Cable Solutions. Providing top-tier underground and overhead cable tracing, fault finding, and advanced systemic rectifications.
             </p>
@@ -68,12 +69,12 @@ const Footer = () => {
           >
             <h4 className="text-gray-900 dark:text-white font-bold mb-6 tracking-wider">NAVIGATION</h4>
             <ul className="space-y-3">
-              {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
+              {['Home', 'Services', 'Projects', 'About Us', 'Contact'].map((link) => (
                 <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(' ', '')}`} className="text-gray-600 dark:text-gray-500 hover:text-blue-600 dark:hover:text-electric-blue transition-colors flex items-center">
+                  <HashLink smooth to={`/#${link.toLowerCase().replace(' ', '')}`} className="text-gray-600 dark:text-gray-500 hover:text-blue-600 dark:hover:text-electric-blue transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full mr-2"></span>
                     {link}
-                  </a>
+                  </HashLink>
                 </li>
               ))}
             </ul>
