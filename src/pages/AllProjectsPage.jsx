@@ -28,8 +28,9 @@ const AllProjectsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Portfolio | All Projects - Ultra Engineering Sri Lanka</title>
-        <meta name="description" content="Browse our complete list of engineering projects across Sri Lanka, including cable fault finding, path tracing, and electrical rectifications." />
+        <title>Engineering Portfolio | Cable Fault Scanning Sri Lanka</title>
+        <meta name="description" content="View our complete history of high-voltage cable testing, path tracing, and electrical fault finding projects across Sri Lanka, including major works at Port Hambantota and Kelanithissa." />
+        <meta name="keywords" content="Ultra Engineering portfolio, cable tracing projects Sri Lanka, electrical fault finding history, high voltage testing log, Ceylon Petroleum scanning, Hambantota Port cable faults" />
       </Helmet>
       
       <div className="min-h-screen bg-gray-100 dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-200 pt-24 pb-16 transition-colors duration-300">

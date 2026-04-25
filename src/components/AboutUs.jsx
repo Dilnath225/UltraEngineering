@@ -15,7 +15,7 @@ const AboutUs = ({ theme }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {});
+          video.play().catch(() => { });
         } else {
           video.pause();
         }
@@ -32,9 +32,9 @@ const AboutUs = ({ theme }) => {
       <AboutCanvas theme={theme} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[2]">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Video Side */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-100px" }}
@@ -53,9 +53,9 @@ const AboutUs = ({ theme }) => {
                 preload="metadata"
                 className="w-full h-auto object-cover aspect-[4/3]"
               />
-              
+
               {/* Overlay Badge */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: 30 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -74,7 +74,7 @@ const AboutUs = ({ theme }) => {
           </motion.div>
 
           {/* Text Side */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-100px" }}
@@ -83,17 +83,19 @@ const AboutUs = ({ theme }) => {
           >
             <div className="inline-flex items-center space-x-2 mb-6">
               <span className="h-1.5 w-12 bg-blue-600 dark:bg-electric-blue rounded-full"></span>
-              <span className="text-blue-700 dark:text-electric-blue font-bold tracking-widest uppercase text-sm">About Us</span>
+              <span className="text-blue-700 dark:text-electric-blue font-bold tracking-widest uppercase text-sm">Expert Engineering Solutions</span>
             </div>
-            
-            <h3 className="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white">State-of-the-Art <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-electric-blue dark:to-blue-400">Testing Equipment</span></h3>
-            
+
+            <h3 className="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white leading-tight">
+              Specialized <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-electric-blue dark:to-blue-400">Electrical Technicians</span> <br /> in Sri Lanka
+            </h3>
+
             <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
-              At Ultra Engineering, we pride ourselves on utilizing advanced, industry-leading diagnostic tools. Our professional teams are equipped to handle complex fault findings and precise tracing across both underground and overhead domains. 
-              Trust in advanced technology paired with deep engineering expertise.
+              At Ultra Engineering, we are the leading specialists in <strong>underground cable fault scanning</strong> and <strong>high voltage testing</strong> in Sri Lanka. Our team uses industry-leading diagnostic tools to handle complex electrical fault finding and precise cable path tracing.
+              With experience at major sites like <em>Ceylon Petroleum (Kolonnawa)</em> and <em>Hambantota Port</em>, we deliver uncompromised precision and safety.
             </p>
-            
-            <motion.ul 
+
+            <motion.ul
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false }}
@@ -102,9 +104,14 @@ const AboutUs = ({ theme }) => {
               }}
               className="space-y-4 mb-10"
             >
-              {['Advanced Multimeter Diagnostics', 'Pinpoint Accuracy Fault Location', 'Certified Electrical Engineers', 'Rapid Response & Rectification'].map((item, idx) => (
-                <motion.li 
-                  key={idx} 
+              {[
+                'Underground Cable Fault Scanning Sri Lanka',
+                'Precision Cable Path Tracing Services',
+                'Advanced High Voltage Cable Testing',
+                'Underground Water Leak Detection Specialists'
+              ].map((item, idx) => (
+                <motion.li
+                  key={idx}
                   variants={{
                     hidden: { opacity: 0, x: 20 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
@@ -112,12 +119,12 @@ const AboutUs = ({ theme }) => {
                   className="flex items-center text-gray-700 dark:text-gray-300"
                 >
                   <CheckCircle2 className="w-6 h-6 text-blue-600 dark:text-electric-blue mr-3 flex-shrink-0" />
-                  <span className="font-medium">{item}</span>
+                  <span className="font-bold">{item}</span>
                 </motion.li>
               ))}
             </motion.ul>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}

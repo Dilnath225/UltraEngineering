@@ -12,7 +12,7 @@ export default {
         'charcoal-light': '#2a2a2a',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'Outfit', 'sans-serif'],
       }
     },
   },
