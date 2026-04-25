@@ -27,7 +27,7 @@ const allProjectsData = [
     category: "Underground",
     isFeatured: true,
     description: "Conducted exhaustive underground cable path tracing across the entire Kolonnawa tank farm, critically identifying complex fire system electrical layouts.",
-    image: "/hero_bg_1776613607809.png",
+    image: "/ultrapetrokolonnawa.PNG",
   },
   {
     id: 4,
