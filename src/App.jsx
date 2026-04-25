@@ -38,25 +38,67 @@ function App() {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ultra Engineering",
+    "image": "https://ultraengineeringlk.com/logo.png",
+    "@id": "https://ultraengineeringlk.com",
+    "url": "https://ultraengineeringlk.com",
+    "telephone": "+94767107462",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Matara",
+      "addressLocality": "Matara",
+      "addressRegion": "Southern Province",
+      "postalCode": "81000",
+      "addressCountry": "LK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 5.9549,
+      "longitude": 80.555
+    },
+    "description": "Ultra Engineering is Sri Lanka's leading specialist in underground cable fault scanning, path tracing, and high voltage testing. Precision diagnostics for industrial power networks.",
+    "serviceType": [
+      "Underground Cable Fault Scanning",
+      "Cable Path Tracing",
+      "High Voltage Cable Testing",
+      "Underground Water Leak Detection"
+    ],
+    "areaServed": "Sri Lanka",
+    "sameAs": [
+      "https://www.facebook.com/share/1L9QCcJPVt/?mibextid=wwXIfr",
+      "https://www.instagram.com/ultraengineering.22?igsh=aXF5MHZ5YnBpdXhi&utm_source=qr"
+    ]
+  };
+
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Ultra Engineering | Underground Cable Scanning & Fault Finding Sri Lanka</title>
+        <title>Underground Cable Fault Scanning Sri Lanka | Ultra Engineering</title>
         <meta
           name="description"
-          content="Ultra Engineering – Sri Lanka's trusted experts in underground cable scanning, overhead cable fault finding, earth insulation testing, and electrical diagnostics in Matara and across the Southern Province."
+          content="Leading specialists in underground cable fault scanning and path tracing in Sri Lanka. Expert high voltage testing and fault finding for industrial power grids."
         />
         <meta
           name="keywords"
-          content="Underground cable scanning Sri Lanka, Overhead cable fault finding, Earth insulation testing Matara, cable tracing Sri Lanka, electrical fault finding, megger testing, cable path tracing, Ultra Engineering"
+          content="underground cable fault scanning Sri Lanka, cable path tracing Sri Lanka, electrical fault finding specialists, high voltage cable testing Sri Lanka, underground water leak detection, Ultra Engineering Sri Lanka, industrial cable tracing, power grid troubleshooting"
         />
-        <link rel="canonical" href="https://ultra-engineering-chi.vercel.app" />
-        <meta property="og:title" content="Ultra Engineering | Precision Electrical & Cable Solutions – Sri Lanka" />
-        <meta property="og:description" content="Professional underground & overhead cable fault finding, earth resistance testing, and insulation diagnostics across Sri Lanka." />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Underground Cable Fault Scanning Sri Lanka | Ultra Engineering" />
+        <meta property="og:description" content="Precision engineering solutions for underground cable tracing, fault finding, and high voltage testing across Sri Lanka." />
+        <meta property="og:image" content="https://ultraengineeringlk.com/og-image.jpg" />
+        <meta property="og:url" content="https://ultraengineeringlk.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ultra-engineering-chi.vercel.app" />
+
+        <link rel="canonical" href="https://ultraengineeringlk.com" />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="Ultra Engineering" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
 
       <Router>
@@ -65,6 +107,8 @@ function App() {
           
           <Routes>
             <Route path="/" element={<HomePage theme={theme} />} />
+            <Route path="/services" element={<HomePage theme={theme} />} />
+            <Route path="/contact" element={<HomePage theme={theme} />} />
             <Route path="/projects" element={<AllProjectsPage />} />
           </Routes>
           
@@ -77,3 +121,4 @@ function App() {
 }
 
 export default App;
+
