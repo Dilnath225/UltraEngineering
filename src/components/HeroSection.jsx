@@ -5,7 +5,7 @@ import HeroCanvas from './HeroCanvas';
 
 const HeroSection = ({ theme }) => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gray-100 dark:bg-charcoal-dark">
+    <section id="home" className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24 lg:pt-20 overflow-hidden bg-gray-100 dark:bg-charcoal-dark">
 
       {/* Modern Fade Background Image */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -35,8 +35,9 @@ const HeroSection = ({ theme }) => {
         <HeroCanvas theme={theme} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 lg:py-0">
-        <div className="max-w-2xl">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-6 lg:py-0">
+        <div className="max-w-3xl">
 
           {/* Text Panel */}
           <div className="flex flex-col justify-center text-left">
@@ -45,10 +46,10 @@ const HeroSection = ({ theme }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center justify-start space-x-2 mb-6"
+              className="inline-flex items-center justify-start space-x-3 mb-4"
             >
-              <span className="h-1.5 w-12 bg-blue-600 dark:bg-electric-blue rounded-full"></span>
-              <span className="text-blue-700 dark:text-electric-blue font-bold tracking-widest uppercase text-sm drop-shadow-md">Industrial Grade</span>
+              <span className="h-px w-10 bg-blue-600 dark:bg-electric-blue"></span>
+              <span className="text-blue-700 dark:text-electric-blue font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs">Industrial Grade</span>
             </motion.div>
 
             <motion.h1
@@ -56,9 +57,10 @@ const HeroSection = ({ theme }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-gray-900 dark:text-white drop-shadow-sm"
+              className="font-black tracking-tight mb-3 leading-[1.05] text-gray-900 dark:text-white"
             >
-              ULTRA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500 dark:from-white dark:to-gray-400">ENGINEERING</span>
+              <span className="block text-sm md:text-lg text-blue-600 dark:text-electric-blue mb-1 tracking-[0.2em] font-extrabold uppercase">ULTRA ENGINEERING</span>
+              <span className="block drop-shadow-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Underground <br className="hidden sm:block" /> Cable Fault Scanning</span>
             </motion.h1>
 
             <motion.h2
@@ -66,9 +68,9 @@ const HeroSection = ({ theme }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl md:text-3xl font-semibold mb-8 text-gray-800 dark:text-gray-200"
+              className="text-base md:text-lg font-bold mb-6 text-gray-800 dark:text-gray-200 tracking-tight max-w-2xl"
             >
-              Precision Electrical & <br className="hidden md:block" /> Cable Solutions.
+              Precision <span className="text-blue-600 dark:text-electric-blue">Path Tracing & High Voltage Diagnostics</span> Specialists in Sri Lanka
             </motion.h2>
 
             <motion.p
@@ -76,9 +78,9 @@ const HeroSection = ({ theme }) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg text-gray-700 dark:text-gray-300 mb-10 max-w-xl"
+              className="text-xs md:text-base text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed font-medium"
             >
-              State-of-the-art diagnostic equipment and expert engineering for fault finding, path tracing, and high-voltage rectification. We ensure your circuits never break.
+              Specializing in high-precision underground cable fault finding, path tracing, and high-voltage rectification across Sri Lanka. Engineered for reliability.
             </motion.p>
 
             <motion.div
@@ -88,12 +90,12 @@ const HeroSection = ({ theme }) => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center justify-start space-y-4 sm:space-y-0 sm:space-x-6"
             >
-              <a href="#services" className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-blue-600 dark:bg-electric-blue text-white rounded-full font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(0,162,255,0.4)] transition-all transform hover:-translate-y-1">
+              <a href="#services" className="w-full sm:w-auto flex items-center justify-center px-6 py-3 bg-blue-600 dark:bg-electric-blue text-white rounded-full font-bold text-sm md:text-base hover:bg-blue-700 dark:hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(0,162,255,0.4)] transition-all transform hover:-translate-y-1">
                 Our Services
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-4 h-4" />
               </a>
-              <a href="tel:+94767107462" className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-white/50 dark:bg-black/30 backdrop-blur-sm border-2 border-gray-400 dark:border-gray-600 text-gray-900 dark:text-white rounded-full font-bold text-lg hover:border-blue-600 dark:hover:border-electric-blue hover:text-blue-600 dark:hover:text-electric-blue transition-all">
-                <PhoneCall className="mr-2 w-5 h-5" />
+              <a href="tel:+94767107462" className="w-full sm:w-auto flex items-center justify-center px-6 py-3 bg-white/50 dark:bg-black/30 backdrop-blur-sm border-2 border-gray-400 dark:border-gray-600 text-gray-900 dark:text-white rounded-full font-bold text-sm md:text-base hover:border-blue-600 dark:hover:border-electric-blue hover:text-blue-600 dark:hover:text-electric-blue transition-all">
+                <PhoneCall className="mr-2 w-4 h-4" />
                 Call Now
               </a>
             </motion.div>
